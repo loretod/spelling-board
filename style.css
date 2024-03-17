@@ -1,0 +1,41 @@
+.vowel{
+    color: red;
+    background-color: lightpink;
+}
+
+.consonant{
+    color:dimgrey;
+    background-color: beige;
+}
+
+#trash{
+    border-style: dotted;
+    border-width: 2px;
+    height:20vh;
+}
+
+#board{
+    height: 30vh;
+}
+
+#trash_container{
+    height:30vh;
+    background-color: rgb(222, 222, 121);
+}
+div{
+    border-style: solid;
+    border-width: 2px;
+    background-color: honeydew;
+}
+
+#alphabet{
+    height: 15vh;
+}
+
+.grid-square {
+    width: 5vw;
+    height: 5vh;
+    border: solid 1px rgb(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 5px;
+}
