@@ -119,6 +119,7 @@ let board_list = Sortable.create(board, {
   direction: 'horizontal',
   onAdd: function(evt){
     evt.item.classList.add("active");
+    readBoard();
   },
   onChange: function(){
     readBoard();

@@ -1,11 +1,15 @@
 .vowel{
-    color: red;
+    color: rgb(39, 36, 36);
     background-color: lightpink;
 }
 
 .consonant{
     color:dimgrey;
     background-color: beige;
+}
+
+.blend{
+    background-color: rgb(208, 233, 208);
 }
 
 #trash{
@@ -29,7 +33,7 @@ div{
 }
 
 #alphabet{
-    height: 15vh;
+    height: 20vh;
 }
 
 .grid-square {
@@ -38,4 +42,37 @@ div{
     border: solid 1px rgb(0, 0, 0, 0.2);
     padding: 10px;
     margin: 5px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2em;
 }
+
+.material-icons {
+font-family: 'Material Icons';
+font-weight: normal;
+font-style: normal;
+font-size: 24px;  /* Preferred icon size */
+display: inline-block;
+line-height: 1;
+text-transform: none;
+letter-spacing: normal;
+word-wrap: normal;
+white-space: nowrap;
+direction: ltr;
+
+/* Support for all WebKit browsers. */
+-webkit-font-smoothing: antialiased;
+/* Support for Safari and Chrome. */
+text-rendering: optimizeLegibility;
+
+/* Support for Firefox. */
+-moz-osx-font-smoothing: grayscale;
+
+/* Support for IE. */
+font-feature-settings: 'liga';
+}
+
+.misspelled {
+    text-decoration: underline;
+    color: red;
+  }
