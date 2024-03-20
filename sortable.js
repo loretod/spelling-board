@@ -1,7 +1,10 @@
+// Variables to store the board areas and other stuff
 let alphabet = document.getElementById('alphabet');
 let blend_div = document.getElementById('blends');
+let word_div = document.getElementById('show_word')
 let board = document.getElementById('board');
 let trash = document.getElementById('trash');
+let concatenatedText = ""
 
 // Speech to text functionality
 const synth = window.speechSynthesis;
@@ -24,7 +27,7 @@ const letters = [
   { text: 'n', class: 'grid-square letter consonant p-2', id:'n' },
   { text: 'o', class: 'grid-square letter vowel p-2', id:'o' },
   { text: 'p', class: 'grid-square letter consonant p-2', id:'p' },
-  { text: 'q', class: 'grid-square letter consonant p-2', id:'q' },
+  { text: 'qu', class: 'grid-square letter consonant p-2', id:'q' },
   { text: 'r', class: 'grid-square letter consonant p-2', id:'r' },
   { text: 's', class: 'grid-square letter consonant p-2', id:'s' },
   { text: 't', class: 'grid-square letter consonant p-2', id:'t' },
@@ -51,17 +54,33 @@ function createDraggableItem(item) {
   draggable.setAttribute('id', item.id); // Add id property from the items dictionary
   draggable.className = `draggable ${item.class}`;
   draggable.draggable = true;
+
+  // Create the audio element
+  const audioElement = document.createElement("audio");
+  audioElement.src = item.audioSrc || "/phonemes/"+ item.id +".mp3"; // Set audio source if provided in the item object
+
+  // Add the audio element to the draggable div
+  draggable.appendChild(audioElement);
+
+  // Handle the data transfer when dragging
   draggable.addEventListener('dragstart', (event) => {
     event.dataTransfer.setData('text/plain', item.class);
     event.dataTransfer.setData('text/plain', item.text);
-    onDragStart(event);
+    //onDragStart(event);
   });
+
+  // Add click event listener to play audio
+  draggable.addEventListener('click', () => {
+    audioElement.play();
+  });
+
   return draggable;
 }
 
 // Function to clear the board on button click
 function clearBoard(){
   board.innerHTML="";
+  word_div.innerText="";
 }
 
 // Temporary function to test the tts functionality of the letters on the screen
@@ -74,6 +93,10 @@ function readBoard(){
   console.log(concatenatedText);
   const utterThis = new SpeechSynthesisUtterance(concatenatedText);
   synth.speak(utterThis);
+
+  word_div.innerHTML= concatenatedText;
+
+  return concatenatedText
 }
 // Append draggableItem to the div with class 'example-draggable'
 letters.forEach((item) => {
@@ -123,6 +146,7 @@ let board_list = Sortable.create(board, {
   },
   onChange: function(){
     readBoard();
+    //word_div.innerHTML= concatenatedText;
   }
 });
 
@@ -132,5 +156,6 @@ let trash_list = Sortable.create(trash, {
   ghostClass: 'sortable-ghost',
   onAdd: function(evt){
     trash.innerHTML="";
+    readBoard();
   },
 });

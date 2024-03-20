@@ -8,34 +8,41 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@500&display=swap" rel="stylesheet">
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
+  <body>
+    <script type='text/javascript' src='/JavaScriptSpellCheck/include.js' ></script>
+    <script type='text/javascript'>$Spelling.SpellCheckAsYouType('show_word')</script>
   <div class="container">
     <div class="row">
       <div class="col-2 d-flex">
         <button type="button" class="btn btn-ouline-warning" onclick="readBoard()"><span class="material-icons align-bottom">hearing</span> Say It</button>
       </div>
-      <div class="col-8 d-flex flex-wrap" id="board">
-        
-      </div>
-      <div id="trash_container" class="col-2 d-flex flex-column">
-        <div class="p-2">
-          <span class="material-icons align-bottom">delete</span> Trash
-        </div>
-        
-        <div class="p-2" id="trash">
 
+      <div class="col-8" id="work_area">
+        <div id="word">
+          <textarea id="show_word" class="word edu-nsw" spellcheck="true" contenteditable="true" cols="20" rows="10" placeholder="Drag letter tiles to the space below to make your word."></textarea>
         </div>
+        
+        <div class="col-8 d-flex flex-wrap align-self-end" id="board"></div>
+      </div>
+
+      <div id="trash_area" class="col-2 d-flex flex-column">
+        <div id="trash"></div>
         <div>
           <button type="button" class="btn btn-outline- btn-block" onclick="clearBoard()"><span class="material-icons align-bottom">
-            refresh
-            </span> Clear</button>
+            clear
+          </span> Clear</button>
         </div>
-        
       </div>
     </div>
+    
     <div class="row">
       <div class="col-9 d-flex align-content-stretch flex-wrap" id="alphabet">
       </div>
@@ -52,7 +59,7 @@
     <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 
     <script src="sortable.js"></script>
-
+  </body>
 </html>
 
   
