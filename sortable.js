@@ -66,7 +66,6 @@ function createDraggableItem(item) {
   draggable.addEventListener('dragstart', (event) => {
     event.dataTransfer.setData('text/plain', item.class);
     event.dataTransfer.setData('text/plain', item.text);
-    //onDragStart(event);
   });
 
   // Add click event listener to play audio
@@ -146,7 +145,8 @@ let board_list = Sortable.create(board, {
   },
   onChange: function(){
     readBoard();
-    //word_div.innerHTML= concatenatedText;
+    //word_div.focus();
+    //board.focus();
   }
 });
 
